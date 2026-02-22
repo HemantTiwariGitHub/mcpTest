@@ -33,3 +33,27 @@ You should see output showing:
 
 - The transport uses `Content-Length` framed JSON-RPC messages over stdio.
 - This is intentionally small and educational, not production-ready.
+
+
+## LLM-orchestrated agent
+
+This repo also includes an LLM orchestration example:
+
+- `agent/llm_mcp_agent.py`
+
+It accepts plain text, uses an OpenAI model to decide whether to call MCP tools,
+executes the selected tool, and then generates a final natural language answer.
+
+Run without API key (heuristic fallback):
+
+```bash
+python agent/llm_mcp_agent.py "show all todos"
+```
+
+Run with OpenAI API key:
+
+```bash
+export OPENAI_API_KEY="your_test_or_real_key"
+python agent/llm_mcp_agent.py "add a todo to learn transactions" --model gpt-4o-mini
+```
+=======
